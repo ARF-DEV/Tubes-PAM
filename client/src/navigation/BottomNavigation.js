@@ -6,8 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MenuScreen from '../screen/MenuScreen';
 import DescribeScreen from '../screen/DescribeScreen';
 import ProfileScreen from '../screen/ProfileScreen';
-
 import { Icon } from 'react-native-elements';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const MenuStack = createNativeStackNavigator();
 function MenuStackScreen(){
@@ -31,17 +31,17 @@ const BottomTab = ({navigation}) => {
                 backgroundColor: '#ffff',
                 borderTopRightRadius: 30,
                 borderTopLeftRadius: 30,
-                height: 60,             
+                height: 70,             
                 paddingTop: 10,
                 bottom:0,
             },
             tabBarInactiveTintColor: '#535151',
-            tabBarActiveTintColor: '#283593',
+            tabBarActiveTintColor: '#498A77',
             tabBarHideOnKeyboard: true,
             tabBarLabelStyle: {
-                marginBottom: 5,
-                fontFamily: "Ubuntu-Light",            
-                fontSize:10,
+                marginBottom: 10,
+                fontFamily: "Ubuntu-Medium",            
+                fontSize:12,
             }
 
          }}
@@ -51,11 +51,7 @@ const BottomTab = ({navigation}) => {
             component={MenuStackScreen}
             options={{ 
                 tabBarIcon: ({color}) =>(
-                    <Icon 
-                    name='home'         
-                    size={20} 
-                    color={color}                
-                    />
+                     <MaterialCommunityIcons name="text-box-search" color={color} size={25} />
                 )
              }}
         />
@@ -63,11 +59,7 @@ const BottomTab = ({navigation}) => {
         <Tab.Screen name="Profile" component={ProfileScreen}
             options={{ 
                 tabBarIcon: ({color}) =>(
-                    <Icon 
-                    name='user-alt'   
-                    size={20} 
-                    color={color}                   
-                    />
+                     <MaterialCommunityIcons name="account" color={color} size={25} />
                 )
              }}
         />
