@@ -2,14 +2,16 @@ package repository
 
 import (
 	"database/sql"
+	"fmt"
+	"log"
 
-	model "github.com/ARF-DEV/Tubes-PAM/server/models"
+	schema "github.com/ARF-DEV/Tubes-PAM/server/schema"
 )
 
 type ProductRepoInterface interface {
-	FetchProduct() ([]model.Product, error)
-	GetByID(id int) (*model.Product, error)
-	GetByName(name string) ([]model.Product, error)
+	FetchProduct() ([]schema.ProductInfo, error)
+	GetByID(id int) (*schema.ProductDetail, error)
+	GetByName(name string) ([]schema.ProductInfo, error)
 }
 
 type ProductRepository struct {
@@ -22,11 +24,11 @@ func NewProductRepo(db *sql.DB) *ProductRepository {
 	}
 }
 
-func (p *ProductRepository) FetchProduct() ([]model.Product, error) {
+func (p *ProductRepository) FetchProduct() ([]schema.ProductInfo, error) {
 	var sqlStatement string
 
 	sqlStatement = `
-		SELECT * FROM products;
+		SELECT id, name, price, short_description FROM products;
 	`
 	rows, err := p.db.Query(sqlStatement)
 
@@ -34,14 +36,14 @@ func (p *ProductRepository) FetchProduct() ([]model.Product, error) {
 		return nil, err
 	}
 
-	var products []model.Product
+	var products []schema.ProductInfo
 	for rows.Next() {
-		var product model.Product
+		var product schema.ProductInfo
 		err = rows.Scan(
 			&product.ID,
 			&product.Name,
-			&product.Description,
 			&product.Price,
+			&product.ShortDescription,
 		)
 
 		if err != nil {
@@ -54,12 +56,12 @@ func (p *ProductRepository) FetchProduct() ([]model.Product, error) {
 	return products, nil
 }
 
-func (p *ProductRepository) GetByID(id int) (*model.Product, error) {
+func (p *ProductRepository) GetByID(id int) (*schema.ProductDetail, error) {
 	var sqlStatement string
-	var product model.Product
+	var product schema.ProductDetail
 
 	sqlStatement = `
-		SELECT * FROM products WHERE id = ?;
+		SELECT id, name, price, long_description FROM products WHERE id = ?;
 	`
 
 	row := p.db.QueryRow(sqlStatement, id)
@@ -67,8 +69,8 @@ func (p *ProductRepository) GetByID(id int) (*model.Product, error) {
 	err := row.Scan(
 		&product.ID,
 		&product.Name,
-		&product.Description,
 		&product.Price,
+		&product.LongDescription,
 	)
 
 	if err != nil {
@@ -78,26 +80,28 @@ func (p *ProductRepository) GetByID(id int) (*model.Product, error) {
 	return &product, nil
 }
 
-func (p *ProductRepository) GetByName(name string) ([]model.Product, error) {
+func (p *ProductRepository) GetByName(name string) ([]schema.ProductInfo, error) {
 	var sqlStatement string
 
 	sqlStatement = `
-		SELECT * FROM products WHERE name = ?;
+		SELECT id, name, price, short_description FROM products WHERE name LIKE ?;
 	`
-	rows, err := p.db.Query(sqlStatement, name)
 
+	pattern := fmt.Sprintf("%c%s%c", '%', name, '%')
+	rows, err := p.db.Query(sqlStatement, pattern)
+	log.Println("Pattern :", pattern)
 	if err != nil {
 		return nil, err
 	}
 
-	var products []model.Product
+	var products []schema.ProductInfo
 	for rows.Next() {
-		var product model.Product
+		var product schema.ProductInfo
 		err = rows.Scan(
 			&product.ID,
 			&product.Name,
-			&product.Description,
 			&product.Price,
+			&product.ShortDescription,
 		)
 
 		if err != nil {
