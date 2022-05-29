@@ -25,7 +25,7 @@ func getProducts(productRepo repository.ProductRepoInterface) http.Handler {
 			w.Write([]byte(fmt.Sprintf("Error : %s", err.Error())))
 			return
 		}
-
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(body)
 		return
@@ -48,7 +48,7 @@ func getProductByID(productRepo repository.ProductRepoInterface) http.Handler {
 		}
 
 		body, err := json.Marshal(product)
-
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(body)
 		return
