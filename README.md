@@ -10,3 +10,5 @@ MARKIKAN atau Mari Kita Makan adalah sebuah aplikasi yang menampilkan daftar sua
 - Gibran Basyayef
 - Eliza Maharani Sutowo
 - Della Salsabila
+
+Ini merupakan Tugas Besar dari mata kuliah Pengembangan Aplikasi Mobile yang dikerjakan secara berkelompok maksimal 4 orang/kelompok
