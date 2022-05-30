@@ -1,6 +1,6 @@
 // const API_URL = 'http://localhost:8000';
 
-const getProductList = () => {
+export const getProductList = () => {
      return async (dispatch) => {
           try {
                const response = await fetch('https://immense-ridge-07575.herokuapp.com/v1/products', {
@@ -20,7 +20,7 @@ const getProductList = () => {
      }
 }
 
-const getProductListByName = (name) => {
+export const getProductListByName = (name) => {
      return async (dispatch) => {
           try {
                const response = await fetch(`https://immense-ridge-07575.herokuapp.com/v1/products?name=${name}`, {
@@ -40,4 +40,4 @@ const getProductListByName = (name) => {
      }
 }
 
-export default { getProductList, getProductListByName };
+// export default { getProductList, getProductListByName };
