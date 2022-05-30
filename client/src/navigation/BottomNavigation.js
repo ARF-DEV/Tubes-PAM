@@ -9,15 +9,15 @@ import ProfileScreen from '../screen/ProfileScreen';
 import { Icon } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const MenuStack = createNativeStackNavigator();
-function MenuStackScreen(){
-    return(
-        <MenuStack.Navigator screenOptions={{ headerShown: false }}>
-            <MenuStack.Screen name="MenuScreen" component={MenuScreen}/>
-            <MenuStack.Screen name="DescribeScreen" component={DescribeScreen}/>
-        </MenuStack.Navigator>
-    );
-}
+// const MenuStack = createNativeStackNavigator();
+// function MenuStackScreen(){
+//     return(
+//         <MenuStack.Navigator screenOptions={{ headerShown: false }}>
+//             <MenuStack.Screen name="MenuScreen" component={MenuScreen}/>
+//             <MenuStack.Screen name="DescribeScreen" component={DescribeScreen}/>
+//         </MenuStack.Navigator>
+//     );
+// }
 
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
@@ -48,7 +48,7 @@ const BottomTab = ({navigation}) => {
         >
         <Tab.Screen 
             name="Menu" 
-            component={MenuStackScreen}
+            component={MenuScreen}
             options={{ 
                 tabBarIcon: ({color}) =>(
                      <MaterialCommunityIcons name="text-box-search" color={color} size={25} />
