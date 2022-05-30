@@ -7,11 +7,13 @@ const DescribeScreen = ({navigation}) => {
     return (
         <SafeAreaView style={styles.container}>
             <View>
-                <Pressable onPress={()=>navigation.goBack()}>
+                <Pressable onPress={()=>navigation.goBack()} style={styles.backNav}>
                     <MaterialCommunityIcons name="menu-left-outline" color={'#498A77'} size={40} />
-                                    <Text>deskripsi</Text>
+                    <Text style={styles.titleText}>Deskripsi Makanan</Text>
                 </Pressable>
-                
+            </View>
+            <View>
+                {/* kontennya */}
             </View>
         </SafeAreaView>
     );
