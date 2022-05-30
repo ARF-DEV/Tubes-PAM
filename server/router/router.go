@@ -3,16 +3,27 @@ package router
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/ARF-DEV/Tubes-PAM/server/repository"
+	"github.com/ARF-DEV/Tubes-PAM/server/schema"
 )
 
 func getProducts(productRepo repository.ProductRepoInterface) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		products, err := productRepo.FetchProduct()
+		var products []schema.ProductInfo
+		var err error
+		name := strings.Trim(r.URL.Query().Get("name"), "\"")
 
+		if name != "" {
+			products, err = productRepo.GetByName(name)
+		} else {
+			products, err = productRepo.FetchProduct()
+		}
+		log.Println(name, products)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte(fmt.Sprintf("Error : %s", err.Error())))
@@ -25,7 +36,7 @@ func getProducts(productRepo repository.ProductRepoInterface) http.Handler {
 			w.Write([]byte(fmt.Sprintf("Error : %s", err.Error())))
 			return
 		}
-
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(body)
 		return
@@ -48,7 +59,7 @@ func getProductByID(productRepo repository.ProductRepoInterface) http.Handler {
 		}
 
 		body, err := json.Marshal(product)
-
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(body)
 		return
@@ -58,9 +69,9 @@ func getProductByID(productRepo repository.ProductRepoInterface) http.Handler {
 func GenerateMux(productRepo repository.ProductRepoInterface) *http.ServeMux {
 	mux := http.NewServeMux()
 
-	mux.Handle("/products", getProducts(productRepo))
+	mux.Handle("/v1/products", getProducts(productRepo))
 
-	mux.Handle("/product", getProductByID(productRepo))
+	mux.Handle("/v1/product", getProductByID(productRepo))
 
 	return mux
 }
