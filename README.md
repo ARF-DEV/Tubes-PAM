@@ -20,6 +20,11 @@ Ini merupakan Tugas Besar dari mata kuliah Pengembangan Aplikasi Mobile yang dik
 Berikut merupakan tampilan halaman utama dari MARKIKAN.
 Pada bagian ini akan menampilkan daftar makanan dan juga deskripsi terkait makanan serta harga dari makanan tersebut
 
+![image](https://user-images.githubusercontent.com/72394029/171030614-3eb00aeb-525f-4cc8-a43b-96111a05f1c2.png)
+
+Berikut merupakan tampilan detail makanan
+Pada bagian ini akan menampilkan gambar dari salah satu makanan yang terdapat pada daftar menu sebelumnya. Bagian ini menampilkan deskripsi makanan secara lengkap dan juga button `pesan makanan` untuk melakukan pemesanan terkait produk makanan tersebut.
+
 
 
 
