@@ -12,3 +12,10 @@ MARKIKAN atau Mari Kita Makan adalah sebuah aplikasi yang menampilkan daftar sua
 - Della Salsabila
 
 Ini merupakan Tugas Besar dari mata kuliah Pengembangan Aplikasi Mobile yang dikerjakan secara berkelompok maksimal 4 orang/kelompok
+
+
+#### Tampilan Aplikasi :cyclone:
+![image](https://user-images.githubusercontent.com/72394029/171028958-bd1d9ef7-8538-4104-bbf8-688cdbc65ec6.png)
+
+Berikut merupakan tampilan halaman utama dari MARKIKAN.
+Pada bagian ini akan menampilkan daftar makanan dan juga deskripsi terkait makanan serta harga dari makanan tersebut
