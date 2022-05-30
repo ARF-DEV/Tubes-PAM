@@ -3,7 +3,7 @@
 const getProductList = () => {
      return async (dispatch) => {
           try {
-               const response = await fetch('http://localhost:8000/products', {
+               const response = await fetch('https://immense-ridge-07575.herokuapp.com/v1/products', {
                     method: 'GET',
                     headers: {
                          'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const getProductList = () => {
 const getProductListByName = (name) => {
      return async (dispatch) => {
           try {
-               const response = await fetch(`http://localhost:8000/products?name=${name}`, {
+               const response = await fetch(`https://immense-ridge-07575.herokuapp.com/v1/products?name=${name}`, {
                     method: 'GET',
                     headers: {
                          'Content-Type': 'application/json',
