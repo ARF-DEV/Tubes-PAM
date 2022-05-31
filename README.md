@@ -26,6 +26,12 @@ Berikut merupakan tampilan detail makanan
 Pada bagian ini akan menampilkan gambar dari salah satu makanan yang terdapat pada daftar menu sebelumnya. Bagian ini menampilkan deskripsi makanan secara lengkap dan juga button `pesan makanan` untuk melakukan pemesanan terkait produk makanan tersebut.
 
 
+### Dependencies atau Modul yang digunaka :
+- `@react-navigation/bottom-tabs` untuk membantu dalam membuat bottom navigation pada tampilan aplikasi 'Markikan'
+- `@react-navigation/native-stack` untuk membantu menggunakan fungsi stack pada sebuah screen yang disatukan 
+- `react-native` membantu pengembangan aplikasi menggunakan komponen `View` , `SafeAreaView` , `Pressable` dan komponen lainnya yang digunakan dalam pengembangan tampilan
+- `react-native-vector-icons` membantu dalam menggunakan ikon di dalam tampilan aplikasi
+-  `react-redux` untuk membantu state manajemen pada aplikasi react
 
 
 
