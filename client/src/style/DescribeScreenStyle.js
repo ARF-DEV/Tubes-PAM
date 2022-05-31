@@ -54,6 +54,31 @@ const styles = StyleSheet.create({
         color: '#ffff',
         fontSize: 16,
     },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center", 
+        width: '100%',   
+    },
+    modalView: {
+        margin: 10,
+        backgroundColor: "white",
+        borderRadius: 10,
+        padding: 50,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+        width: 0,
+        height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    modalText:{
+        fontSize:20,
+        color: "#498A77",
+    },
 });
 
 export default styles;
