@@ -2,6 +2,7 @@
 # MARKIKAN
 
 MARKIKAN atau Mari Kita Makan adalah sebuah aplikasi yang menampilkan daftar suatu makanan dan detail terkait makanan tersebut.
+
 ![image](https://user-images.githubusercontent.com/72394029/171025331-10f86b7a-5243-4236-aed7-4ebe7617e716.png)
 
 
@@ -32,11 +33,6 @@ Pada bagian ini akan menampilkan gambar dari salah satu makanan yang terdapat pa
 - `react-native` membantu pengembangan aplikasi menggunakan komponen `View` , `SafeAreaView` , `Pressable` dan komponen lainnya yang digunakan dalam pengembangan tampilan
 - `react-native-vector-icons` membantu dalam menggunakan ikon di dalam tampilan aplikasi
 -  `react-redux` untuk membantu state manajemen pada aplikasi react
-
-
-
-
-
 
 
 
