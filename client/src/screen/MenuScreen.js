@@ -107,7 +107,7 @@ const MenuScreen = ({navigation}) => {
                             return (
                                 <>
                                     <View>
-                                        <Pressable style={styles.card} onPress={() => navigation.navigate('DescribeScreen')}>
+                                        <Pressable style={styles.card} onPress={() => navigation.navigate('DescribeScreen',{item})}>
                                             <View style={styles.image}>
                                                 <Image 
                                                     source={require('../asset/food.png')}

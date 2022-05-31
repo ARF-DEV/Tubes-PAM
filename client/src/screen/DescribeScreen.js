@@ -1,11 +1,37 @@
-import React from 'react';
-import {SafeAreaView,View, Text, Pressable, Image} from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView,View, Text, Pressable, Image,Modal, TouchableWithoutFeedback} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from '../style/DescribeScreenStyle';
 
-const DescribeScreen = ({navigation}) => {
+const DescribeScreen = ({route, navigation}) => {
+    const data = route.params.item;
+    const [modalVisible, setModalVisible] = useState(false);
+    
     return (
         <SafeAreaView style={styles.container}>
+            <View>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <TouchableWithoutFeedback
+                    onPress={() => setModalVisible(!modalVisible)}
+                    >
+                        <View style={styles.centeredView}>
+                            <View style={styles.modalView}>
+                                <Text style={styles.modalText}>Makanan berhasil dipesan</Text>
+                            </View>
+                        </View>
+                    </TouchableWithoutFeedback>
+                    
+                </Modal>
+            </View>
+
             <View>
                 <Pressable onPress={()=>navigation.goBack()} style={styles.backNav}>
                     <MaterialCommunityIcons name="menu-left-outline" color={'#498A77'} size={40} />
@@ -17,12 +43,12 @@ const DescribeScreen = ({navigation}) => {
                     <Image style={styles.image} source={require('../asset/food2.png')}/>
                 </View>
                 <View style={styles.descriptionText}>
-                    <Text style={styles.menuTitle}>Hola</Text>
-                    <Text style={styles.descText}>Deskripsinya nanti taro disini yang panjang itu </Text>
+                    <Text style={styles.menuTitle}>{data.name}</Text>
+                    <Text style={styles.descText}>{data.long_desc} </Text>
                 </View>                
             </View>
             <View style={styles.theButton}>
-                <Pressable style={styles.button} onPress={()=>console.log('kalo bisa diganti sama modal tulisannya kamu berhasil memesan makanan')}>
+                <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
                     <Text style={styles.textButton}>Pesan Makanan</Text>
                 </Pressable>
             </View>
